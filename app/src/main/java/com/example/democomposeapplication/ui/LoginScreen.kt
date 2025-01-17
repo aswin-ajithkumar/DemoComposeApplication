@@ -39,7 +39,6 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.democomposeapplication.R
 import com.example.democomposeapplication.ui.theme.DemoComposeApplicationTheme
 import kotlinx.coroutines.launch

@@ -1,11 +1,9 @@
 package com.example.democomposeapplication.ui
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Edit
@@ -28,7 +26,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
@@ -37,8 +34,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun ItemList(name: String) {
 
-    val scrollState = rememberScrollState()
-    val snackbarHostState = SnackbarHostState()
+//    val scrollState = rememberScrollState()
+    val snackBarHostState = SnackbarHostState()
     val scope = rememberCoroutineScope()
     Scaffold(
         topBar = {
@@ -49,7 +46,7 @@ fun ItemList(name: String) {
                 actions = {
                     IconButton(onClick = {
                         scope.launch {
-                            snackbarHostState.showSnackbar("Search Clicked")
+                            snackBarHostState.showSnackbar("Search Clicked")
                         }
                     }) {
                         Icon(Icons.Default.Search, contentDescription = "Search")
@@ -58,7 +55,7 @@ fun ItemList(name: String) {
                 navigationIcon = {
                     IconButton(onClick = {
                         scope.launch {
-                            snackbarHostState.showSnackbar("Menu Clicked")
+                            snackBarHostState.showSnackbar("Menu Clicked")
                         }
                     }) {
                         Icon(Icons.AutoMirrored.Default.List, contentDescription = "Menu")
@@ -79,14 +76,14 @@ fun ItemList(name: String) {
         floatingActionButton = {
             FloatingActionButton(onClick = {
                 scope.launch {
-                    snackbarHostState.showSnackbar("FAB Clicked")
+                    snackBarHostState.showSnackbar("FAB Clicked")
                 }
             }) {
                 Icon(Icons.Default.Edit, contentDescription = "Search")
             }
         },
         snackbarHost = {
-            SnackbarHost(snackbarHostState)
+            SnackbarHost(snackBarHostState)
         },
         floatingActionButtonPosition = FabPosition.EndOverlay
     ) {
@@ -94,7 +91,7 @@ fun ItemList(name: String) {
 //            items(100) {
             itemsIndexed(
                 listOf("This", "is", "Jetpack", "Compose", "Application", "for", "Android","Development", name)
-            ) { index, string ->
+            ) { _, string ->
                 Text(
                     text = string,
                     fontSize = 18.sp,

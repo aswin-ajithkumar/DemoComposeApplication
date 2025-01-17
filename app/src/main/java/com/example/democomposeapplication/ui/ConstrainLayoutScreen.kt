@@ -24,13 +24,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layoutId
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavController
 import androidx.wear.compose.material.Text
-import com.example.democomposeapplication.ui.Screen.Data.route
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
@@ -87,8 +85,8 @@ fun Greeting(navController: NavController) {
             ) {
                 OutlinedTextField(
                     value = textFieldValue,
-                    onValueChange = {
-                        textFieldValue = it
+                    onValueChange = {textValue->
+                        textFieldValue = textValue
                     },
                     modifier = Modifier
                         .fillMaxWidth()
