@@ -1,6 +1,9 @@
 package com.example.democomposeapplication.ui
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -10,6 +13,8 @@ import androidx.navigation.navArgument
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
+//    val canNavigateBack by remember { mutableStateOf(false) }
+
     NavHost(navController = navController, startDestination = Screen.Data.route) {
 
         composable(route = Screen.Data.route) {
@@ -24,10 +29,11 @@ fun Navigation() {
                     defaultValue = "Android" // Default value
                     nullable = false
                 }
-            )
+            ),
+
         ) { entry ->
             val name = entry.arguments?.getString("name") ?: "Default"
-            ItemList(name = name)
+            ItemList(name = name, navController)
         }
     }
 }

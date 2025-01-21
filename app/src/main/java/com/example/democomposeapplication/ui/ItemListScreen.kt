@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.BottomAppBar
@@ -28,15 +28,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ItemList(name: String) {
+fun ItemList(name: String, navController:NavController) {
 
 //    val scrollState = rememberScrollState()
     val snackBarHostState = SnackbarHostState()
     val scope = rememberCoroutineScope()
+//    val canNavigateBack by remember { mutableStateOf(false) }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -53,16 +56,19 @@ fun ItemList(name: String) {
                     }
                 },
                 navigationIcon = {
-                    IconButton(onClick = {
-                        scope.launch {
-                            snackBarHostState.showSnackbar("Menu Clicked")
+//                    if (canNavigateBack){
+                        IconButton(onClick = {
+                            scope.launch {
+                                snackBarHostState.showSnackbar("Back Clicked")
+                                navController.navigateUp()
+                            }
+                        }) {
+                            Icon(Icons.AutoMirrored.Default.KeyboardArrowLeft, contentDescription = "Go back")
                         }
-                    }) {
-                        Icon(Icons.AutoMirrored.Default.List, contentDescription = "Menu")
-                    }
+//                    }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Red
+//                    containerColor = Color.Red
                 )
             )
         },
