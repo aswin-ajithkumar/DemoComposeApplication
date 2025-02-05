@@ -59,9 +59,7 @@ fun LoginScreen() {
     val snackBarHostState = SnackbarHostState()
     val scope = rememberCoroutineScope()
     Scaffold(
-        topBar = {},
-        bottomBar = {},
-        floatingActionButton = {},
+
         snackbarHost = {
             SnackbarHost(snackBarHostState)
         }
